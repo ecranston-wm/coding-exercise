@@ -1,24 +1,7 @@
-# README
+# Getting Started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Install Ruby and the bundler gem
+1. Run `bundle`
+1. Run `bundle exec rake db:setup`
+1. Confirm `bundle exec rails s` successfully boots the application
+1. Confirm `bundle exec rspec` returns `2 examples, 0 failures`
