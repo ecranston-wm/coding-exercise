@@ -1,0 +1,30 @@
+<h1 class='page-header'>Orders</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Order Number</th>
+      <th>Delivery Date</th>
+      <th>Item</th>
+      <th>Destination</th>
+      <th>Source</th>
+      <th>Quantity</th>
+      <th>Order Status</th>
+      <th>Export Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+      <tr class="order-#{order.id}">
+        <td><%= order.order_number %></td>
+        <td><%= order.delivery_date %></td>
+        <td><%= order.item_name %></td>
+        <td><%= order.destination_name %></td>
+        <td><%= order.source_name %></td>
+        <td><%= order.item_quantity_in_tons %></td>
+        <td><%= order.order_status %></td>
+        <td><%= order.integration_order.export_state %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

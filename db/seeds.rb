@@ -5,27 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-orders = 10.times do
-  Order.create(
-
-  )
-end
 
 def generate_order
   Order.create(
-    order_number: '123',
-    delivery_date: Time.now,
-    destination_item_name: 'Whey Liquid DCCA',
-    item_price_cents: '25',
-    item_quantity: '24.0',
-    source_name: 'Western Milling - Liquid Direct',
-    order_status: 'shipped'
+    order_number: Faker::Number.number(5),
+    delivery_date: Faker::Date.between(2.days.ago, 2.days.from_now),
+    destination_name: Faker::Company.name,
+    item_name: Faker::Commerce.product_name,
+    item_quantity_in_tons: Faker::Number.decimal(2, 2),
+    source_name: Faker::Company.name,
+    order_status: ['unassigned', 'sourced', 'shipped', 'invoiced', 'canceled'].sample
   )
 end
 
 def generate_integration_order(order)
   IntegrationOrder.create(
     order: order,
-    export_state: 'exported'
+    export_state: ['uninitiated', 'queued', 'exported', 'error'].sample
   )
 end
+
+orders = Array.new(20) do |i|
+  generate_order
+end
+
+orders.each {|order| generate_integration_order(order) }
