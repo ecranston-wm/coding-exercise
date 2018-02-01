@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20180201005308) do
     t.integer "order_id", null: false
     t.string "export_state", null: false
     t.string "integration_order_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -26,6 +28,8 @@ ActiveRecord::Schema.define(version: 20180201005308) do
     t.decimal "item_quantity_in_tons", null: false
     t.string "source_name", null: false
     t.string "order_status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
